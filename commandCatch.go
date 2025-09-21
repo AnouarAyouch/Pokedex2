@@ -35,6 +35,7 @@ func commandCatch(c *Config, args []string) error {
 	random := rand.Intn(100)
 	if random < catchChance {
 		fmt.Printf("%s was caught! \n", pokemon.Name)
+		fmt.Println("You may now inspect it with the inspect command.")
 		caughtPokemon[pokemon.Name] = pokemon
 	} else {
 		fmt.Printf("%s  escaped!\n", pokemon.Name)
@@ -44,8 +45,7 @@ func commandCatch(c *Config, args []string) error {
 }
 
 func showAllPokemonInPokedex(c *Config, args []string) error {
-
-	fmt.Println("=== Your Pokedex ===")
+	fmt.Println("Your Pokedex:")
 	for _, p := range caughtPokemon {
 		fmt.Printf("- %s (Base Exp: %d)\n", p.Name, p.BaseExperience)
 	}
